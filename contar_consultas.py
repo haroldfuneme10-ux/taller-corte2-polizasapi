@@ -23,6 +23,10 @@ Se califica `consultas_sql`, que es determinista; `tiempo_ms` cambia de una
 máquina a otra y solo sirve para interpretar.
 
 Pueden modificarlo. Si lo hacen, dígan­lo en HALLAZGOS.md.
+
+MODIFICACIÓN DEL GRUPO (declarada en HALLAZGOS.md · Parte C): la columna `estrategia` ya
+no se deja vacía; se copia de `main.ESTRATEGIA_CARGA`, el mismo diccionario que documenta
+la estrategia que aplica cada ruta. Así el CSV no puede decir una cosa y el código otra.
 """
 import argparse
 import csv
@@ -66,7 +70,7 @@ def main():
         contador["n"] += 1
 
     from fastapi.testclient import TestClient
-    from main import app
+    from main import ESTRATEGIA_CARGA, app
     from sembrar_datos import sembrar
 
     filas = []
@@ -90,7 +94,7 @@ def main():
                 if r.status_code >= 400:
                     raise SystemExit(f"\n{ruta} devolvió {r.status_code}. No se escribe el CSV: primero hay "
                                      f"que dejar el servicio respondiendo. Cuerpo: {r.text[:300]}")
-                fila = {"endpoint": endpoint, "estrategia": "", "n_polizas": n,
+                fila = {"endpoint": endpoint, "estrategia": ESTRATEGIA_CARGA[endpoint], "n_polizas": n,
                         "consultas_sql": contador["n"], "tiempo_ms": round(dt, 1)}
                 filas.append(fila)
                 print(f"  {endpoint:<16} n={n:<5} consultas {fila['consultas_sql']:>5}   "
@@ -101,7 +105,7 @@ def main():
         w.writeheader()
         w.writerows(filas)
     print(f"\n{a.salida} escrito con {len(filas)} filas. Base temporal: {db}")
-    print("Falta lo suyo: rellenar `estrategia` en cada fila y explicar los números.")
+    print("La columna `estrategia` sale de main.ESTRATEGIA_CARGA; la explicación está en HALLAZGOS.md.")
 
 
 if __name__ == "__main__":
