@@ -1,1 +1,16 @@
+# Python
+__pycache__/
 *.pyc
+.pytest_cache/
+
+# Entornos virtuales
+venv/
+.venv/
+env/
+
+# Configuración local con secretos: nunca se versiona (se publica .env.example)
+.env
+
+# Bases de datos SQLite (la de la app, la de los tests y las temporales)
+*.db
+*.db-journal
