@@ -1,6 +1,6 @@
 # Dictamen sobre `ia_tests_propuesta.py` — Parte D
 
-**Grupo:** <número> · **Integrantes:** Harold <apellido>, <nombre 2>, <nombre 3>
+**Grupo:** <número> · **Integrantes:** Gabriel Aldana, Natalia Carrero, Harold Fúneme
 
 > La batería de la IA está en verde sobre el semilla y sobre nuestro servicio corregido, pero no
 > demuestra nada. Para cada defecto introdujimos una mutación en el servicio ya corregido, corrimos

@@ -1,6 +1,6 @@
 # Hallazgos — Parte A
 
-**Grupo:** <número> · **Integrantes:** Harold <apellido>, <nombre 2>, <nombre 3>
+**Grupo:** <número> · **Integrantes:** Gabriel Aldana, Natalia Carrero, Harold Fúneme
 
 > Cada fila se reprodujo sobre el commit semilla `5a5cc5b` (la etiqueta `v0-semilla` del
 > repositorio original), con el servicio recién arrancado (`uvicorn main:app --port 8000`) y la

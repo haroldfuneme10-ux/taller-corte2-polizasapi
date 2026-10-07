@@ -10,6 +10,6 @@
 
 | Nombre completo | Correo institucional | Identidades git |
 |-----------------|----------------------|-----------------|
-| Harold APELLIDO | usuario@usta.edu.co | NOMBRE APELLIDO <usuario@usta.edu.co>; haroldfuneme10-ux <correo@gmail.com> |
-| | | |
-| | | |
+| Gabriel Aldana | CORREO-GABRIEL@usta.edu.co | Gabriel Aldana <gabrielaldana917@gmail.com> |
+| Natalia Carrero | CORREO-NATALIA@usta.edu.co | Natalia Carrero <CORREO-GIT-NATALIA> |
+| Harold Fúneme | CORREO-HAROLD@usta.edu.co | Harold Fúneme <CORREO-GIT-HAROLD> |
