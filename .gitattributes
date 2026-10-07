@@ -1,0 +1,2 @@
+# Los scripts de shell se guardan con fin de línea LF también en Windows
+*.sh text eol=lf

@@ -22,7 +22,7 @@ WORKDIR /app
 COPY --from=builder /opt/venv /opt/venv
 # .dockerignore deja fuera .env, *.db, .git, entornos virtuales y tests.
 COPY --chown=appuser:appuser . .
-RUN mkdir -p /app/datos && chown appuser:appuser /app/datos && chmod +x docker-entrypoint.sh
+RUN sed -i 's/\r$//' docker-entrypoint.sh && mkdir -p /app/datos && chown appuser:appuser /app/datos && chmod +x docker-entrypoint.sh
 
 USER appuser
 EXPOSE 8000
