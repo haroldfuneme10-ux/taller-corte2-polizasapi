@@ -8,8 +8,9 @@
 >
 > **Cómo se trabajó.** Gabriel abrió una sesión de Claude Code sobre el repositorio y le pidió
 > resolver el taller completo a partir del enunciado, el índice del curso y el borrador de
-> hallazgos de Harold. La IA escribió el código y los entregables y los commits quedaron a nombre
-> de Gabriel (que operaba la sesión), con la línea `Co-Authored-By: Claude`. Después, a pedido
+> hallazgos de Harold. La IA escribió el código y los entregables, y los commits de esa sesión
+> aparecen con la identidad `Claude <noreply@anthropic.com>`. En `EQUIPO.md` esa identidad está
+> declarada como de **Gabriel**, porque él operaba la sesión; no se reescribió la historia. Después, a pedido
 > nuestro, la IA **criticó su propio trabajo**: esa autocrítica está en `## Rechazado` (filas
 > 8 a 17), junto con lo que se corrigió y lo que quedó pendiente a sabiendas.
 > **Pendiente:** cada integrante añade aquí sus propios prompts y lo que rechace al revisar.
@@ -20,7 +21,7 @@
 |---|-------|-------|-------------------------------|
 | 1 | A–E | Gabriel | «Estamos realizando el taller del corte 2; en el otro HTML están los módulos que hemos visto (hasta Docker); en el .md están nuestros hallazgos, no han sido comprobados». Se adjuntaron el enunciado, el índice del curso y un borrador de `HALLAZGOS.md`. |
 | 2 | — | Gabriel | (Sin prompt nuevo.) El push desde la sesión falló con 403 porque la app de GitHub no tenía permisos; la rama se subió desde una máquina local |
-| 3 | E | Gabriel | «Divide los commits entre nosotros tres; autocrítícate para la bitácora; explícanos la Parte C y cómo presentamos en Docker» |
+| 3 | E | Gabriel | «Divide los commits entre nosotros tres; autocritícate para la bitácora; explícanos la Parte C y cómo presentamos en Docker» |
 | 4 | | | |
 
 ## Aceptado
@@ -43,8 +44,8 @@
 | 5 | Usar `joinedload` también en `/resumen` | Medido: 1 consulta pero ≈166 ms, porque igual construye 6000 objetos `Siniestro` para hacer `len()` y `sum()` en Python | Consulta agregada con `GROUP BY` (1 consulta, ≈7,6 ms) |
 | 6 | Construir la imagen de Docker añadiendo al `Dockerfile` el certificado del proxy de la sesión (para que `pip` funcionara en la nube) | Es un detalle del entorno donde corría la IA, no del servicio; meterlo en el `Dockerfile` ensuciaría la imagen y fallaría en otras máquinas | Se verificó con una copia temporal del `Dockerfile` fuera del repositorio; el `Dockerfile` entregado no lo lleva |
 | 7 | Hacer `SECRETO_FIRMA` obligatorio (sin valor por defecto) | `docker run -p 8000:8000 polizas-api` debe arrancar sin `.env` (B9) y la imagen no puede llevar `.env`: con el campo obligatorio el contenedor no arranca | Valor por defecto **no secreto**, solo para desarrollo; el real va por entorno (`--env-file`) |
-| 8 | Repartir los commits entre los tres integrantes cambiando el autor | El calificador mide con `git log` la contribución de **cada** persona (I3, C2). Poner a Natalia o a Harold como autores de commits que escribió una IA en una sesión de Gabriel falsea esa medición, y la bitácora diría lo contrario que el `git log` | Los commits de la sesión quedan a nombre de Gabriel (con `Co-Authored-By: Claude`); Natalia y Harold hacen **sus propios** commits sobre las partes que revisan y defienden |
-| 9 | (Autocrítica) La IA hizo los commits con su propia identidad `Claude <noreply@anthropic.com>` | `verificar_entrega.py` la marcaba como una persona extra que no está en `EQUIPO.md` | Se reescribió el autor a Gabriel, que operaba la sesión; la autoría de la IA queda en el trailer `Co-Authored-By` |
+| 8 | Repartir los commits entre los tres integrantes cambiando el autor | El calificador mide con `git log` la contribución de **cada** persona (I3, C2). Poner a Natalia o a Harold como autores de commits que escribió una IA en una sesión de Gabriel falsea esa medición, y la bitácora diría lo contrario que el `git log` | Los commits de la sesión se quedan como están y se cuentan como de Gabriel; Natalia y Harold hacen **sus propios** commits sobre las partes que revisan y defienden |
+| 9 | (Autocrítica) La IA hizo los commits con su propia identidad `Claude <noreply@anthropic.com>` | `verificar_entrega.py` la marcaba como una persona extra que no está en `EQUIPO.md` | No se reescribió la historia (ya estaba publicada): la identidad se declara en `EQUIPO.md` como de Gabriel, que operaba la sesión, y esta bitácora lo dice |
 | 10 | (Autocrítica) Los commits de la Parte B no se pueden ejecutar uno por uno: el de B1 cambia `config.py` y `database.py` sigue usando `config.DATABASE_URL` hasta el commit siguiente | Un commit intermedio que no arranca impide usar `git bisect` y hace que la historia «describa» cambios que no funcionan solos | No se reescribió (ya estaba publicada); queda anotado. La lección: cada commit debe dejar el servicio arrancando |
 | 11 | (Autocrítica) `SECRETO_FIRMA` tiene un valor por defecto en el código | Si en producción se olvida definirlo, el servicio firma en silencio con un valor conocido | Se mantiene el valor (B9 exige que `docker run` arranque sin `.env`), pero ahora `config.py` **avisa en el log** al arrancar con él |
 | 12 | (Autocrítica) `GET /health` responde 200 aunque la base no responda (solo cambia `base_datos` a `"error"`) | El `HEALTHCHECK` de Docker solo mira el código HTTP: con la base caída el contenedor seguiría «healthy» | No se cambió: B10 pide «200 e indica si la base responde». En la sustentación lo explicamos como un límite conocido (en producción se usaría 503) |
