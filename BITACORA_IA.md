@@ -8,9 +8,9 @@
 >
 > **Cómo se trabajó.** Gabriel abrió una sesión de Claude Code sobre el repositorio y le pidió
 > resolver el taller completo a partir del enunciado, el índice del curso y el borrador de
-> hallazgos de Harold. La IA escribió el código y los entregables, y los commits de esa sesión
-> aparecen con la identidad `Claude <noreply@anthropic.com>`. En `EQUIPO.md` esa identidad está
-> declarada como de **Gabriel**, porque él operaba la sesión; no se reescribió la historia. Después, a pedido
+> hallazgos de Harold. La IA escribió el código y los entregables. Los commits de esa sesión
+> quedaron a nombre de Gabriel, que operaba la sesión, y cada uno conserva la línea
+> `Co-Authored-By: Claude` que deja ver la participación de la IA. Después, a pedido
 > nuestro, la IA **criticó su propio trabajo**: esa autocrítica está en `## Rechazado` (filas
 > 8 a 17), junto con lo que se corrigió y lo que quedó pendiente a sabiendas.
 > **Pendiente:** cada integrante añade aquí sus propios prompts y lo que rechace al revisar.
