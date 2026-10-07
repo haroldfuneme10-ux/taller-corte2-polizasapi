@@ -1,0 +1,26 @@
+# Secretos y datos locales: nunca dentro de la imagen
+.env
+*.db
+*.db-journal
+
+# Control de versiones, entornos y cachés
+.git
+.gitignore
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Lo que no se necesita para ejecutar el servicio
+tests/
+plantillas/
+ia_tests_propuesta.py
+contar_consultas.py
+verificar_entrega.py
+CONSULTAS.csv
+*.md
+!README.md
+Dockerfile
+.dockerignore
