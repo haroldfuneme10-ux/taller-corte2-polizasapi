@@ -79,6 +79,15 @@ una todas las columnas de la póliza, y el ORM tiene que deduplicar (`.unique()`
 uno-a-muchos, menos consultas no es menos trabajo. Es el caso en que seguir la regla da peor
 rendimiento.
 
+**Medición de Natalia.** En mi computador, `/polizas` con 2000 pólizas tardó 240,2 ms con
+5 consultas SQL (con 10 pólizas: 7,5 ms y 2 consultas). El conteo salió igual que en la
+medición del grupo, porque contar consultas no depende de la máquina sino de cómo está
+escrito el código: `selectinload` hace 1 consulta para las pólizas y reparte los siniestros
+en lotes de 500 claves, así que son 1 + ⌈2000/500⌉ = 5 (y 1 + ⌈10/500⌉ = 2 con 10 pólizas).
+Lo que sí cambió fue el tiempo, y por eso la rúbrica califica las consultas y no los
+milisegundos. Si el `lazy` del semilla estuviera activo, mi máquina habría ejecutado
+1 + 2000 = 2001 consultas (el N+1) en lugar de 5.
+
 ## `/polizas/{id}`
 
 **lazy: 2 consultas con 10 y con 2000 pólizas.** `db.get()` trae la póliza por clave primaria
