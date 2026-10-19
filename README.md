@@ -58,6 +58,7 @@ luego uvicorn en `0.0.0.0:8000`. La base vive en `/app/datos/polizas.db` dentro 
 
 Para pasar secretos al contenedor: `docker run --env-file .env -e DATABASE_URL=sqlite:////app/datos/polizas.db -p 8000:8000 polizas-api`.
 
+### Probado en Windows (Docker Desktop) Harold verificó la demo completa en Windows: /health responde, POST /polizas da 201, tras docker restart la póliza se conserva y en un contenedor nuevo la lista sale vacía.En Windows, git puede guardar docker-entrypoint.sh con fin de línea CRLF y el contenedor se apaga al arrancar; el Dockerfile lo corrige al construir y .gitattributes lo evita. Para probar los endpoints sin escribir comandos, lo más fácil es http://localhost:8000/docs.
 ## Endpoints
 
 | Método | Ruta | Respuestas |
