@@ -22,7 +22,7 @@
 | 1 | A–E | Gabriel | «Estamos realizando el taller del corte 2; en el otro HTML están los módulos que hemos visto (hasta Docker); en el .md están nuestros hallazgos, no han sido comprobados». Se adjuntaron el enunciado, el índice del curso y un borrador de `HALLAZGOS.md`. |
 | 2 | — | Gabriel | (Sin prompt nuevo.) El push desde la sesión falló con 403 porque la app de GitHub no tenía permisos; la rama se subió desde una máquina local |
 | 3 | E | Gabriel | «Divide los commits entre nosotros tres; autocritícate para la bitácora; explícanos la Parte C y cómo presentamos en Docker» |
-| 4 | | | |
+| 4 | A | Harold | Borrador inicial de HALLAZGOS.md (los 13 hallazgos que luego la IA comprobó y corrigió) |
 
 ## Aceptado
 
@@ -54,4 +54,5 @@
 | 15 | (Autocrítica) La imagen se verificó con una copia del `Dockerfile` que añadía el certificado del proxy de la nube | No es exactamente el archivo entregado: un error en la etapa de construcción podría haber pasado desapercibido | Hay que correr `docker build` del `Dockerfile` real en una máquina nuestra antes de la sustentación (ver README) |
 | 16 | (Autocrítica) En `DICTAMEN_IA.md` cambió los rótulos a `**Qué está mal**:` (dos puntos fuera de las negritas) | Lo hizo para que pase la expresión regular de `verificar_entrega.py`, pero se aparta de la plantilla, que dice «no las reescriban» | Se dejó así porque el verificador dice hacer las mismas comprobaciones que el calificador; si el docente lo objeta, se vuelve al formato de la plantilla |
 | 17 | (Autocrítica) Las filas 4–7 de esta tabla las presentó como «propuestas de la IA» cuando eran alternativas que ella misma evaluó y descartó | Una bitácora que adorna lo que pasó pierde valor; el enunciado penaliza la falsificación | Se reescribió la nota de arriba para decir exactamente qué es cada fila |
-
+| 18 | La IA unió en una sola fila (H13) varios defectos de Docker: CMD con 127.0.0.1, --reload, imagen python:latest, usuario root y sin .dockerignore | La evidencia de esa fila solo demuestra el CMD; los otros defectos quedan mencionados sin comando que los pruebe, y el calificador solo cuenta lo que tiene evidencia | Se dejó así para no pasar del máximo de 14 filas, pero en la sustentación explicamos cada defecto por separado |
+| 19 | (Harold) Pegar el bloque del PDF en el README tal cual | Al copiar del PDF se perdieron los saltos de línea: todo quedó en una sola línea que empezaba con `###`, así que Markdown lo mostraba como un título gigante, y quedó `vacía.En` sin espacio | Se separó en título y párrafos con líneas en blanco y se corrigió el commit con `git commit --amend` |
